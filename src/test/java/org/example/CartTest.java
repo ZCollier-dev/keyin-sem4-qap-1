@@ -47,7 +47,7 @@ public class CartTest {
         float initialTotal = testCart.getTotalCost();
         testCart.addCartItem(testGame);
         float finalTotal = testCart.getTotalCost();
-        Assertions.assertNotEquals(initialTotal, finalTotal);
+        Assertions.assertEquals(initialTotal + testGame.getPrice(), finalTotal);
         testCart.removeCartItemByID(12);
         finalTotal = testCart.getTotalCost();
         Assertions.assertEquals(initialTotal, finalTotal);

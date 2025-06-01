@@ -5,9 +5,16 @@ public class Order {
     private Game[] orderItems;
     private float totalCost;
 
-    public Order(Cart cart){
+    public Order(Cart cart, float taxRate){
         this.orderItems = cart.getCartItemsAsArray();
-        this.totalCost = cart.getTotalCost();
+        this.totalCost = cart.getTotalCost() * (1 + taxRate);
+    }
+
+    public Game[] getOrderItems(){
+        return orderItems;
+    }
+    public float getTotalCost(){
+        return this.totalCost;
     }
 
     /* display order info (orders are unchanging) (part of purchase processing, test case)*/
