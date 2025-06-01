@@ -9,4 +9,6 @@ public class OrderDB {
     public OrderDB(){
         this.orders = new ArrayList<>();
     }
+
+    /* add order. view order list (is also part of purchase processing test case) */
 }

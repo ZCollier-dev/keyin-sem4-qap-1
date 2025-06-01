@@ -9,4 +9,6 @@ public class Order {
         this.orderItems = cart.getCartItemsAsArray();
         this.totalCost = cart.getTotalCost();
     }
+
+    /* display order info (orders are unchanging) (part of purchase processing, test case)*/
 }
