@@ -19,4 +19,6 @@ public class Cart {
     public float getTotalCost(){
         return totalCost;
     }
+
+    /* calc total cost (test case), add game & remove game from cart (test case), reset cart?*/
 }
