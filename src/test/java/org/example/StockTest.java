@@ -32,6 +32,7 @@ public class StockTest {
         Game[] testSingleGame = testStock.searchGamesByName("b");
         Game[] testMultiGame = testStock.searchGamesByName("game");
         Assertions.assertEquals(1, testSingleGame.length);
+        Assertions.assertNotEquals(testSingleGame[0], testGames[0]);
         Assertions.assertEquals(2, testMultiGame.length);
         Assertions.assertArrayEquals(new Game[]{testGames[0], testGames[2]}, testMultiGame);
     }
