@@ -65,4 +65,11 @@ public class Stock {
         System.out.println("Game ID not found.");
     }
 
+    public String toString(){
+        String returnString = "Stock: \n";
+        for (int i = 0; i < gameStock.length; i++) {
+            returnString += gameStock[i] + "\n";
+        }
+        return returnString;
+    }
 }

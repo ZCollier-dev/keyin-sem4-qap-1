@@ -20,5 +20,12 @@ public class OrderDB {
         return this.orders.toArray(orderArray);
     }
 
+    public String toString(){
+        String returnString = "Order DB: \n\n";
+        for (int i = 0; i < orders.size(); i++) {
+            returnString += orders.get(i).toString() + "\n\n";
+        }
+        return returnString;
+    }
     /* add order. view order list (is also part of purchase processing test case) */
 }
