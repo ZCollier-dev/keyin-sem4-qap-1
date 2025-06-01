@@ -17,5 +17,13 @@ public class Order {
         return this.totalCost;
     }
 
+    public String toString(){
+        String returnString = "Order: \n";
+        for (int i = 0; i < this.orderItems.length; i++) {
+            returnString += this.orderItems[i].toString() + "\n";
+        }
+        returnString += "Total: $" + this.totalCost;
+        return returnString;
+    }
     /* display order info (orders are unchanging) (part of purchase processing, test case)*/
 }

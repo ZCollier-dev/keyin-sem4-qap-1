@@ -49,5 +49,13 @@ public class Cart {
             this.totalCost += this.cartItems.get(i).getPrice();
         }
     }
-    /* calc total cost (test case), add game & remove game from cart (test case), reset cart?*/
+
+    public String toString(){
+        String returnString = "Cart: \n";
+        for (int i = 0; i < this.cartItems.size(); i++) {
+            returnString += this.cartItems.get(i).toString() + "\n";
+        }
+        returnString += "Total: $" + this.totalCost;
+        return returnString;
+    }
 }
