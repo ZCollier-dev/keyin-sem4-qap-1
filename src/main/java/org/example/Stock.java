@@ -62,7 +62,7 @@ public class Stock {
                 return;
             }
         }
-        System.out.println("Game ID not found.");
+        System.out.println("ERR: Game ID not found.");
     }
 
     public String toString(){
