@@ -13,12 +13,41 @@ public class Cart {
     }
 
     public Game[] getCartItemsAsArray(){
-        Game[] cartArray = new Game[cartItems.size()];
-        return cartItems.toArray(cartArray);
+        Game[] cartArray = new Game[this.cartItems.size()];
+        return this.cartItems.toArray(cartArray);
     }
     public float getTotalCost(){
-        return totalCost;
+        return this.totalCost;
     }
 
+    public void addCartItem(Game item){
+        this.cartItems.add(item);
+        calcTotalCost();
+        System.out.println(item.getTitle() + " added to cart.");
+    }
+    public void removeCartItemByID(int id){
+        for (int i = 0; i < this.cartItems.size(); i++) {
+            if (this.cartItems.get(i).getId() == id){
+                String title = this.cartItems.get(i).getTitle();
+                this.cartItems.remove(i);
+                calcTotalCost();
+                System.out.println(title + " removed from cart.");
+                return;
+            }
+        }
+        System.out.println("ERR: Game not found.");
+    }
+    public void clearCart(){
+        this.cartItems.clear();
+        this.totalCost = 0.00f;
+        System.out.println("Cart cleared.");
+    }
+
+    private void calcTotalCost(){
+        this.totalCost = 0.00f;
+        for (int i = 0; i < this.cartItems.size(); i++) {
+            this.totalCost += this.cartItems.get(i).getPrice();
+        }
+    }
     /* calc total cost (test case), add game & remove game from cart (test case), reset cart?*/
 }
