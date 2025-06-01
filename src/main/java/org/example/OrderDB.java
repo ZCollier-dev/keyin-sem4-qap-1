@@ -10,5 +10,15 @@ public class OrderDB {
         this.orders = new ArrayList<>();
     }
 
+    public void addOrder(Order order){
+        orders.add(order);
+        System.out.println("Order processed.");
+    }
+
+    public Order[] getOrders(){
+        Order[] orderArray = new Order[this.orders.size()];
+        return this.orders.toArray(orderArray);
+    }
+
     /* add order. view order list (is also part of purchase processing test case) */
 }
