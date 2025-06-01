@@ -25,9 +25,8 @@ public class Game {
     public void setPrice(float newPrice){
         this.price = newPrice;
     }
-    /* change price (test case?)*/
 
     public String toString(){
-        return String.format("$1 - $$2", this.title, this.price);
+        return String.format("$1: $2 - $$3", this.id, this.title, this.price);
     }
 }
