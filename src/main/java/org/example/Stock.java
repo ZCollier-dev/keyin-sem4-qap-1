@@ -71,8 +71,8 @@ public class Stock {
     // Returns the full list of games in stock
     public String toString(){
         String returnString = "Stock: \n";
-        for (int i = 0; i < gameStock.length; i++) {
-            returnString += gameStock[i] + "\n";
+        for (int i = 0; i < this.gameStock.length; i++) {
+            returnString += this.gameStock[i] + "\n";
         }
         return returnString;
     }

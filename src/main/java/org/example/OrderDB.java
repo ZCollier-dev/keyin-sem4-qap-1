@@ -13,9 +13,9 @@ public class OrderDB {
     }
 
     public void addOrder(Order order){
-        order.setID(nextID);
-        ++nextID;
-        orders.add(order);
+        order.setID(this.nextID);
+        ++this.nextID;
+        this.orders.add(order);
         System.out.println("Order processed.");
     }
 
@@ -27,8 +27,8 @@ public class OrderDB {
     // Displays the full contents of the database.
     public String toString(){
         String returnString = "\nOrder DB: \n\n";
-        for (int i = 0; i < orders.size(); i++) {
-            returnString += orders.get(i).toString() + "\n----------\n";
+        for (int i = 0; i < this.orders.size(); i++) {
+            returnString += this.orders.get(i).toString() + "\n----------\n";
         }
         return returnString;
     }
