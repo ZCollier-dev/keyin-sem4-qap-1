@@ -1,5 +1,6 @@
 # Keyin College - Semester 4 - QAP1 - Game Store System
 AUTHOR: Zachary Collier
+
 DEPENDENCIES: 
 - JUnit 5 Jupiter API - Maven Repository - https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
 
@@ -12,18 +13,22 @@ All functionality can be accessed through a menu system, allowing users to contr
 Many tests have been implemented into the project.
 
 In CartTest.java:
+
 Adding items is the first thing tested for, checking if the cart's ArrayList properly adds the game.
 Removing items is next, ensuring that not only is an item removed, but also that the correct item was removed.
 Clearing items ensures that the cart is properly cleared of items and holds nothing after the operation.
 Calculating the total cost checks if the total cost of the cart items properly updates upon adding and removing items from the cart.
 
 In OrderDBTest.java:
+
 Adding orders to the database is the only thing tested, ensuring that orders are properly added to the object.
 
 In OrderTest.java:
+
 Creating the order is the only thing tested, ensuring the proper initialization of the Order object, and also that the tax rate is properly applied.
 
 In StockTest.java:
+
 Creating a custom stock is first, ensuring that the custom stock's array is the same as its input.
 Searching the stock by ID tests if the proper game is returned after recieving an input ID.
 Searching the stock by a name or search query checks if a query returns the correct games matching the query, and tests both single- and multi-game return values.
