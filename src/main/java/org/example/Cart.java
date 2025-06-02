@@ -2,7 +2,6 @@ package org.example;
 
 import java.util.ArrayList;
 
-// - Cart: games arraylist, totalcost (changes often)
 public class Cart {
     private ArrayList<Game> cartItems;
     private float totalCost;
@@ -55,7 +54,7 @@ public class Cart {
         for (int i = 0; i < this.cartItems.size(); i++) {
             returnString += this.cartItems.get(i).toString() + "\n";
         }
-        returnString += "Total: $" + this.totalCost;
+        returnString += String.format("Total: $%.2f", this.totalCost);
         return returnString;
     }
 }

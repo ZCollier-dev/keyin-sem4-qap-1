@@ -27,6 +27,6 @@ public class Game {
     }
 
     public String toString(){
-        return String.format("$1: $2 - $$3", this.id, this.title, this.price);
+        return String.format("%d: %s - $%.2f", this.id, this.title, this.price);
     }
 }

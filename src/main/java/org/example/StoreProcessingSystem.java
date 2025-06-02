@@ -40,11 +40,29 @@ public class StoreProcessingSystem {
         return stock;
     }
 
+    public Cart searchGameByIDAndAdd(Stock stock, Cart cart, Scanner scanner){
+        System.out.println("Enter game ID: ");
+        if (scanner.hasNextInt()){
+            int id;
+            Game game;
+            id = scanner.nextInt();
+            game = stock.getGameByID(id);
+            if (game != null){
+                cart.addCartItem(game);
+            }
+        } else {
+            System.out.println("ERR: Invalid input.");
+            scanner.next();
+        }
+        return cart;
+    }
+
     public Cart searchGameByNameAndAdd(Stock stock, Cart cart, Scanner scanner){
         String query;
         Game[] searchResults;
 
         System.out.print("Enter search query: ");
+        scanner.nextLine();
         query = scanner.nextLine();
         searchResults = stock.searchGamesByName(query);
         if (searchResults.length > 0){
@@ -56,17 +74,21 @@ public class StoreProcessingSystem {
                 System.out.println("Enter game ID to purchase (or -1 to buy none of them): ");
                 if (scanner.hasNextInt()){
                     id = scanner.nextInt();
-                    scanner.next();
                     if (id <= -1) {
                         break;
                     }
+                    Game game = null;
                     for (int i = 0; i < searchResults.length; i++) {
                         if (id == searchResults[i].getId()){
-                            cart.addCartItem(searchResults[i]);
+                            game = searchResults[i];
+                            cart.addCartItem(game);
                             break;
                         }
                     }
-                    System.out.println("ERR: ID not found.");
+                    if (game == null){
+                        System.out.println("ERR: Invalid choice.");
+                    }
+
                 } else {
                     System.out.println("ERR: Invalid input.");
                     scanner.next();
@@ -85,7 +107,6 @@ public class StoreProcessingSystem {
             System.out.print("Enter game ID to delete (or -1 to exit): ");
             if (scanner.hasNextInt()){
                 id = scanner.nextInt();
-                scanner.next();
                 if (id <= -1){
                     break;
                 }
@@ -102,14 +123,16 @@ public class StoreProcessingSystem {
         String choice;
         System.out.println("Review your order: ");
         System.out.println(cart.toString());
-        System.out.println("TAX: $" + (cart.getTotalCost() * taxRate));
-        System.out.println("TOTAL: $" + (cart.getTotalCost() * (1 + taxRate)));
+        System.out.println(String.format("TAX: $%.2f", (cart.getTotalCost() * taxRate)));
+        System.out.println(String.format("TOTAL: $%.2f", (cart.getTotalCost() * (1 + taxRate))));
         System.out.println();
         while (true) {
             System.out.print("Place your order now? (y for yes, n for no): ");
+            scanner.nextLine();
             choice = scanner.nextLine();
             if (choice.toLowerCase().equals("y")){
                 database.addOrder(new Order(cart, taxRate));
+                break;
             } else if (choice.toLowerCase().equals("n")){
                 break;
             } else {
