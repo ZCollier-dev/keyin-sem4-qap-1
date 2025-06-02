@@ -49,11 +49,14 @@ public class Cart {
         }
     }
 
+    // Returns the cart's games as well as the total cost of said contents
     public String toString(){
         String returnString = "Cart: \n";
+
         for (int i = 0; i < this.cartItems.size(); i++) {
             returnString += this.cartItems.get(i).toString() + "\n";
         }
+
         returnString += String.format("Total: $%.2f", this.totalCost);
         return returnString;
     }

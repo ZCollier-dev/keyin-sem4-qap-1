@@ -2,10 +2,7 @@ package org.example;
 
 import java.util.Scanner;
 
-// system for cart and stock manipulation
-// connects front to back
-// stock, cart, scanner called through methods
-// doesn't have any values of its own
+// Handles advanced logic away from the menu.
 public class StoreProcessingSystem {
 
     public Stock changeGamePrice(Stock stock, Scanner scanner){
@@ -13,6 +10,7 @@ public class StoreProcessingSystem {
         float price;
 
         System.out.println(stock);
+
         while (true) {
             System.out.println("Enter game ID: ");
             if (scanner.hasNextInt()){
@@ -36,12 +34,14 @@ public class StoreProcessingSystem {
                 scanner.next();
             }
         }
+
         stock.setGamePrice(id, price);
         return stock;
     }
 
     public Cart searchGameByIDAndAdd(Stock stock, Cart cart, Scanner scanner){
         System.out.println("Enter game ID: ");
+
         if (scanner.hasNextInt()){
             int id;
             Game game;
@@ -54,6 +54,7 @@ public class StoreProcessingSystem {
             System.out.println("ERR: Invalid input.");
             scanner.next();
         }
+
         return cart;
     }
 
@@ -62,21 +63,26 @@ public class StoreProcessingSystem {
         Game[] searchResults;
 
         System.out.print("Enter search query: ");
-        scanner.nextLine();
         query = scanner.nextLine();
         searchResults = stock.searchGamesByName(query);
+
         if (searchResults.length > 0){
             int id;
+
             for (int i = 0; i < searchResults.length; i++) {
                 System.out.println(searchResults[i].toString());
             }
+
             while (true) {
                 System.out.println("Enter game ID to purchase (or -1 to buy none of them): ");
+
                 if (scanner.hasNextInt()){
                     id = scanner.nextInt();
+
                     if (id <= -1) {
                         break;
                     }
+
                     Game game = null;
                     for (int i = 0; i < searchResults.length; i++) {
                         if (id == searchResults[i].getId()){
@@ -85,10 +91,10 @@ public class StoreProcessingSystem {
                             break;
                         }
                     }
+
                     if (game == null){
                         System.out.println("ERR: Invalid choice.");
                     }
-
                 } else {
                     System.out.println("ERR: Invalid input.");
                     scanner.next();
@@ -97,14 +103,17 @@ public class StoreProcessingSystem {
         } else {
             System.out.println("ERR: No games found.");
         }
+
         return cart;
     }
 
-    public Cart removeGame(Cart cart, Scanner scanner){
+    public Cart removeGameFromCart(Cart cart, Scanner scanner){
         int id;
+
         while (true) {
             System.out.println(cart.toString());
             System.out.print("Enter game ID to delete (or -1 to exit): ");
+
             if (scanner.hasNextInt()){
                 id = scanner.nextInt();
                 if (id <= -1){
@@ -116,20 +125,24 @@ public class StoreProcessingSystem {
                 scanner.next();
             }
         }
+
         return cart;
     }
 
     public OrderDB purchaseAndCreateOrder(Cart cart, float taxRate, OrderDB database, Scanner scanner){
         String choice;
+
         System.out.println("Review your order: ");
         System.out.println(cart.toString());
         System.out.println(String.format("TAX: $%.2f", (cart.getTotalCost() * taxRate)));
         System.out.println(String.format("TOTAL: $%.2f", (cart.getTotalCost() * (1 + taxRate))));
         System.out.println();
+
         while (true) {
             System.out.print("Place your order now? (y for yes, n for no): ");
             scanner.nextLine();
             choice = scanner.nextLine();
+
             if (choice.toLowerCase().equals("y")){
                 database.addOrder(new Order(cart, taxRate));
                 break;
@@ -139,6 +152,7 @@ public class StoreProcessingSystem {
                 System.out.println("ERR: Invalid input.");
             }
         }
+
         return database;
     }
 }

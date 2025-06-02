@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 
-// - OrderDB: Order arrayList (would be an actual db)
+// This class would typically be a normal database instead.
 public class OrderDB {
     private ArrayList<Order> orders;
     int nextID;
@@ -24,6 +24,7 @@ public class OrderDB {
         return this.orders.toArray(orderArray);
     }
 
+    // Displays the full contents of the database.
     public String toString(){
         String returnString = "\nOrder DB: \n\n";
         for (int i = 0; i < orders.size(); i++) {
