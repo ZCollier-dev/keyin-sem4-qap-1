@@ -25,6 +25,7 @@ public class OrderDBTest {
     }
 
     @Test
+    // Tests whether an order is successfully added to the database.
     void testAddOrder(){
         testDB.addOrder(testOrder);
         Assertions.assertEquals(1, testDB.getOrders().length);

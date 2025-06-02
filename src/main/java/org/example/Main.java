@@ -57,11 +57,12 @@ public class Main {
                         break;
                     }
                     case 5: {
+                        scanner.nextLine();
                         cart = SPSystem.searchGameByNameAndAdd(stock, cart, scanner);
                         break;
                     }
                     case 6: {
-                        cart = SPSystem.removeGame(cart, scanner);
+                        cart = SPSystem.removeGameFromCart(cart, scanner);
                         break;
                     }
                     case 7: {
@@ -71,6 +72,7 @@ public class Main {
                     case 8: {
                         int oldDBLength = database.getOrders().length;
                         database = SPSystem.purchaseAndCreateOrder(cart, HST, database, scanner);
+
                         if (database.getOrders().length > oldDBLength){
                             cart.clearCart();
                         }

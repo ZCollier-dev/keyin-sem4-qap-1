@@ -17,10 +17,12 @@ public class Order {
         return this.totalCost;
     }
 
+    // Used only for OrderDB
     public void setID(int id){
         this.id = id;
     }
 
+    // Returns the order's games as well as its total cost, after taxes.
     public String toString(){
         String returnString = "Order " + id + ": \n";
         for (int i = 0; i < this.orderItems.length; i++) {

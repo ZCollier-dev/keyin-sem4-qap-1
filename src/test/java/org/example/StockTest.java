@@ -17,20 +17,25 @@ public class StockTest {
     int testId = 3;
 
     @Test
-    void testCustomStockSize(){
+    // Tests whether the custom stock is initialized properly.
+    void testCustomStockInitialized(){
         Assertions.assertEquals(3, testStock.getGameStock().length);
+        Assertions.assertArrayEquals(testGames, testStock.getGameStock());
     }
 
     @Test
+    // Tests whether the getGameByID method returns the correct game.
     void testSearchByID(){
         Game testGame = testStock.getGameByID(testId);
         Assertions.assertEquals(testId, testGame.getId());
     }
 
     @Test
+    // Tests whether the searchGamesByName method returns the correct items in the array, both single- and multi-game results.
     void testSearchByName(){
         Game[] testSingleGame = testStock.searchGamesByName("b");
         Game[] testMultiGame = testStock.searchGamesByName("game");
+
         Assertions.assertEquals(1, testSingleGame.length);
         Assertions.assertNotEquals(testSingleGame[0], testGames[0]);
         Assertions.assertEquals(2, testMultiGame.length);
@@ -38,9 +43,9 @@ public class StockTest {
     }
 
     @Test
+    // Tests whether using the setGamePrice method successfully updates the price in the stock.
     void testSetGamePrice(){
         testStock.setGamePrice(testId, testPrice);
         Assertions.assertEquals(testPrice, testStock.getGameByID(testId).getPrice());
     }
-
 }

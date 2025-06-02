@@ -23,6 +23,7 @@ public class OrderTest {
         }
     }
     @Test
+    // Tests whether an order is successfully created.
     void testOrderCreation(){
         testOrder = new Order(testCart, taxRate);
         Assertions.assertArrayEquals(testGames, testOrder.getOrderItems());

@@ -20,7 +20,6 @@ public class Stock {
                 new Game(9, "TUNIC", 38.99f),
                 new Game(10, "DOOM", 24.99f)
         };
-
     }
     public Stock(Game[] gameStock){
         this.gameStock = gameStock;
@@ -36,19 +35,23 @@ public class Stock {
                 return this.gameStock[i];
             }
         }
+
         System.out.println("ERR: Game ID not found.");
         return null;
     }
+    // Returns a set of games based on a search query.
     public Game[] searchGamesByName(String searchQuery){
         ArrayList<Game> searchResults = new ArrayList<>();
         Pattern pattern = Pattern.compile(searchQuery, Pattern.CASE_INSENSITIVE);
         Matcher matcher;
+
         for (int i = 0; i < this.gameStock.length; i++) {
             matcher = pattern.matcher(this.gameStock[i].getTitle());
             if (matcher.find()){
                 searchResults.add(this.gameStock[i]);
             }
         }
+
         Game[] searchArray = new Game[searchResults.size()];
         return searchResults.toArray(searchArray);
     }
@@ -61,9 +64,11 @@ public class Stock {
                 return;
             }
         }
+
         System.out.println("ERR: Game ID not found.");
     }
 
+    // Returns the full list of games in stock
     public String toString(){
         String returnString = "Stock: \n";
         for (int i = 0; i < gameStock.length; i++) {

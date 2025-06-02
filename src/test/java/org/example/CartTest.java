@@ -5,11 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CartTest {
-
-    // validate game addition/removal/clear
-    // cart total calc (maybe with tax?)
-    // create order as part of purchase processing
-
     Stock standardStock = new Stock();
     Game testGame = new Game(12, "TestGame", 12.34f);
     int[] testIDs = new int[]{1,4,6};
@@ -24,11 +19,13 @@ public class CartTest {
     }
 
     @Test
+    // Tests whether items were successfully added to the cart.
     void testAddCartItems(){
         Assertions.assertEquals(3, testCart.getCartItemsAsArray().length);
     }
 
     @Test
+    // Tests whether items were successfully removed, and that the correct item was removed.
     void testRemoveCartItems(){
         testCart.removeCartItemByID(testIDs[1]);
         Assertions.assertEquals(2, testCart.getCartItemsAsArray().length);
@@ -37,6 +34,7 @@ public class CartTest {
     }
 
     @Test
+    // Tests whether the cart is successfully cleared of all items.
     void testClearCartItems(){
         testCart.clearCart();
         Assertions.assertEquals(0, testCart.getCartItemsAsArray().length);
@@ -44,6 +42,7 @@ public class CartTest {
 
     @Test
     void testCalcCartTotal(){
+        // Tests whether the total cost is properly calculated on item add/remove.
         float initialTotal = testCart.getTotalCost();
         testCart.addCartItem(testGame);
         float finalTotal = testCart.getTotalCost();
