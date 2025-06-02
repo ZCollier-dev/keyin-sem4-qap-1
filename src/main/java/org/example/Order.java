@@ -1,9 +1,9 @@
 package org.example;
 
-// - Order: games array, totalcost (typically an entry into a db)
 public class Order {
     private Game[] orderItems;
     private float totalCost;
+    private int id;
 
     public Order(Cart cart, float taxRate){
         this.orderItems = cart.getCartItemsAsArray();
@@ -17,13 +17,16 @@ public class Order {
         return this.totalCost;
     }
 
+    public void setID(int id){
+        this.id = id;
+    }
+
     public String toString(){
-        String returnString = "Order: \n";
+        String returnString = "Order " + id + ": \n";
         for (int i = 0; i < this.orderItems.length; i++) {
             returnString += this.orderItems[i].toString() + "\n";
         }
-        returnString += "Total: $" + this.totalCost;
+        returnString += String.format("Total: $%.2f", this.totalCost);
         return returnString;
     }
-    /* display order info (orders are unchanging) (part of purchase processing, test case)*/
 }

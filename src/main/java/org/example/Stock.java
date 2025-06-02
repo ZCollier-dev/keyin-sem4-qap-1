@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-// - Stock: games array (maybe 10 games standard per stock? bigger arrays possible)
 public class Stock {
     private Game[] gameStock;
 
@@ -37,7 +36,7 @@ public class Stock {
                 return this.gameStock[i];
             }
         }
-        System.out.println("Game ID not found.");
+        System.out.println("ERR: Game ID not found.");
         return null;
     }
     public Game[] searchGamesByName(String searchQuery){
